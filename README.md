@@ -22,9 +22,19 @@ As of the day of writing this, `tsc` does not provide a diff functionality so th
 ```
 
 ### Customization: 
-- Make sure that you replace npm run check:types with your tsc command.
+- Make sure that you replace `npm run check:types` with your tsc command.
 - You can change the second branch name from master to any branch you want.
 
+### Pipeline Integration:
+
+#### Bitbucket Pipelines
+
+Add the following to the root of your yml file. This way you can access the master branch on the pipeline.
+
+```yml
+clone:
+  depth: full
+```
 
 ## Usage 
 
@@ -33,3 +43,10 @@ Execute the NPM command on your terminal:
 ```shell
 npm run check-types:compare
 ```
+
+
+## TODO
+
+- Extract branch names into vars so they are easier to change
+- Make this a library on npm so it's easier to install
+- Optimize run time by not running the diff 4 times (2 for each branch)
